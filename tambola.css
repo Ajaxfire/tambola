@@ -1,9 +1,11 @@
 :root{
-  --primary-dark: #2C51BF;
-  --primary-light: #f1f1f1;
-  --base: #5F49F2;
-  --secondary: #F2CE1B;
-  --tertiary: #BF4D0B;
+  --primary-dark: #200F75;
+  --primary-light: #EEEEEE;
+  --base: #0078e7;
+  --secondary: #ACACAC;
+  --tertiary: #767676;
+  --clicker-height:50px;
+  --numbers: #389BF2;
 }
 body{
   margin: 0 auto;
@@ -11,10 +13,10 @@ body{
   background-color: var(--base);
   color: var(--primary-light);
 }
- main{
-   align-items: center;
-   width:85%;
- }
+main{
+  align-items: center;
+  width:85%;
+}
 header{
   display: block;
   width:100%;
@@ -31,80 +33,66 @@ aside{
 
 .clicker{
   margin: 10px 0 10px 0;
+  width:100%;
+  display:inline-flex;
 }
-
 .btn{
-  display:inline-block;
- padding:0.46em 1.6em;
- border:0.1em solid #000000;
- margin:0 0.2em 0.2em 0;
- border-radius:0.12em;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:var(--primary-dark);
- text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
- background-color:var(--primary-light);
- text-align:center;
- transition: all 0.15s;
+  padding:0.46em 1.6em;
+  border:0.1em solid #000000;
+  border-radius:0.12em;
+  font-weight:300;
+  color:var(--primary-dark);
+  background-color:var(--primary-light);
+  /* background-color:var(--primary-light); */
+  transition: all 0.15s;
+  height: var(--clicker-height);
+  width: 20%;
 }
 .btn:hover{
-  text-shadow: 0 0 2em rgba(255,255,255,1);
- color:var(--primary-light);
- border-color:var(--primary-light);
+  color:var(--base);
+  border-color:var(--primary-light);
 }
-
+#announce{
+    width: 80%;
+    display: inline;
+    text-align: center;
+    font-size: 30px;
+    height:var(--clicker-height);
+}
 .flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: var(--secondary);
+/*  background-color: var(--secondary); */
 }
-
 .flex-container > div {
-  background-color: #389BF2;
+  background-color: var(--numbers);
   width: 10%;
   text-align: center;
   line-height: 50px;
   font-size: 30px;
 }
-
 .notUsed{
-  color: var(--primary-dark);
+  color: var(--secondary);
 }
 .used{
-  color: var(--primary-light);
+  color: var(--primary-dark);
 }
 .numCalled{
   width:100%;
+  height: 50px;
   text-align: center;
 }
 .log{
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  flex-direction: column-reverse;
+  justify-content: flex-start;
+  flex-direction: column;
   width:100%;
   height:430px;
-  align:center;
 }
 .log > div{
   text-align: center;
   font-size:15px;
   width:20%;
-}
-
-.bouncy{
- animation:bouncy 5s infinite linear;
- position:relative;
-}
-@keyframes bouncy {
- 0%{top:0em}
- 40%{top:0em}
- 43%{top:-0.9em}
- 46%{top:0em}
- 48%{top:-0.4em}
- 50%{top:0em}
- 100%{top:0em;}
 }

@@ -2,25 +2,30 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="description" content="Online Tambola" />
+  <meta name="keywords" content="tambola, bingo, online, play, generator">
+  <meta name="author" content="AjaxFire">
   <link rel="stylesheet" type="text/css" href="tambola.css" />
   <script type="text/javascript" src="scripts.js"></script>
+  <title>Online Tambola</title>
 </head>
 <body>
-<div class="bodyFlex">
-<header><h1>Tambola</h1></header>
-<main>
-<div class="clicker">
-  <button class="btn bouncy" onclick="generateNumber()">Next Number</button><br />
-</div>
-  <div class="flex-container" id="tambolaTable"></div>
-  <script type="text/javascript">
+  <div class="bodyFlex">
+    <header><h1>Tambola</h1></header>
+    <main>
+      <div class="clicker">
+        <button autofocus class="btn" onclick="generateNumber()">Next Number</button>
+        <div id="announce"></div>
+      </div>
+      <div class="flex-container" id="tambolaTable"></div>
+      <script type="text/javascript">
       generateBlankTemplate();
-  </script>
-</main>
-<aside>
-  <div class="numCalled"><h3>Numbers called</h3></div>
-  <div class="log" id="logTable"></div>
-</aside>
-</div>
+      </script>
+    </main>
+    <aside>
+      <div class="numCalled"><h3>Order</h3></div>
+      <div class="log" id="logTable"></div>
+    </aside>
+  </div>
 </body>
 </html>
