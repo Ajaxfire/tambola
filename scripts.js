@@ -23,6 +23,9 @@ generateBlankTemplate = ()=>{
     rootDiv.appendChild(newElement);
   }
 }
+const SPEED = 10000; //millisec
+var state = "idle"; //can be idle, paused, running, complete
+var timerFunc;
 
 returnRandomNumber=()=>{
   if(usedNumbers.length == 91){
@@ -42,13 +45,40 @@ returnRandomNumber=()=>{
   return -1;
 }
 
-toggleText=()=>{
+setText=(val)=>{
   var rootBtn = document.getElementsByClassName("btn")[0];
-  if(rootBtn.textContent.includes('Start')){
-    rootBtn.textContent = "⏸ Pause";
+  switch(val){
+    case "start": rootBtn.textContent = "▶️ Start";
+    break;
+    case "pause": rootBtn.textContent = "⏸ Pause";
+    break;
+    case "resume": rootBtn.textContent = "▶️ Resume";
+    break;
+    case "new":
+    default: rootBtn.textContent = "▶️ Restart";
   }
-  else{
-    rootBtn.textContent = "▶️ Start";
+
+}
+//only needed for the auto-timed version of the game
+timedGenerator=()=>{
+  switch (state) {
+    case "idle": timerFunc= setInterval(generateNumber,SPEED);
+                setText("pause");
+                state="running";
+                break;
+    case "running":  clearInterval(timerFunc);
+                setText("resume");
+                state = "paused";
+                break;
+    case "paused": timerFunc= setInterval(generateNumber,SPEED);
+                setText("pause");
+                state="running";
+                break;
+    case "completed": clearInterval(timerFunc);
+                location.reload();
+                break;
+    default: state = "completed";
+              clearInterval(timerFunc);
   }
 }
 
@@ -57,20 +87,23 @@ generateNumber=()=>{
   var nextNumber = returnRandomNumber();
   if(nextNumber<=0){
     //there has been a problem. or the game is over.
+    state="completed";
+    clearInterval(timerFunc);
+    setText("new");
     return;
   } else
   {
-    //toggleText(); //Enable when timer is available
     var rootDiv=document.getElementById("logTable");
     var newElement=document.createElement("div");
     var msg = document.getElementById("msg");
     var num = document.getElementById("num");
     var currentNumber=document.createTextNode(nextNumber);
+    var updateElement = document.getElementById(nextNumber);
+
     //Update Side Log
     newElement.appendChild(currentNumber);
     rootDiv.appendChild(newElement);
     //Update Table
-    var updateElement = document.getElementById(nextNumber);
     updateElement.classList.add("used");
     updateElement.classList.remove("notUsed");
     //update announcement

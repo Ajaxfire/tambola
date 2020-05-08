@@ -14,13 +14,14 @@
     <header><h1>Tambola</h1></header>
     <main>
       <div class="clicker">
-        <button autofocus class="btn" onclick="generateNumber()">▶️ Start</button>
+        <button autofocus class="btn" onclick="timedGenerator()">▶️ Start</button>
         <div id="announce">
           <div id="msg"></div>
           <div class="num" id="num"></div>
         </div>
+        <div class="timer"></div>
       </div>
-      <div class="flex-container" id="tambolaTable"></div>
+      <div class="grid-container" id="tambolaTable"></div>
       <script type="text/javascript">
       generateBlankTemplate();
       </script>
