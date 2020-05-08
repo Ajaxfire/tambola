@@ -92,8 +92,13 @@ timedGenerator=()=>{
   }
   else {
     clearInterval(timerFunc);
-    generateNumber();
-    setText("next");
+    if(state=="completed"){
+      location.reload();
+    }
+    else {
+      setText("next");
+      generateNumber();
+    }
     timer.style.visibility="hidden";
   }
 }
