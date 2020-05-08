@@ -24,6 +24,7 @@ generateBlankTemplate = ()=>{
   }
 }
 const SPEED = 10000; //millisec
+const INTERVAL = 10;
 var state = "idle"; //can be idle, paused, running, complete
 var timerFunc;
 
@@ -54,6 +55,8 @@ setText=(val)=>{
     break;
     case "resume": rootBtn.textContent = "▶️ Resume";
     break;
+    case "next": rootBtn.textContent = "▶️ Next";
+    break;
     case "new":
     default: rootBtn.textContent = "▶️ Restart";
   }
@@ -61,29 +64,43 @@ setText=(val)=>{
 }
 //only needed for the auto-timed version of the game
 timedGenerator=()=>{
-  switch (state) {
-    case "idle": timerFunc= setInterval(generateNumber,SPEED);
-                setText("pause");
-                state="running";
-                break;
-    case "running":  clearInterval(timerFunc);
-                setText("resume");
-                state = "paused";
-                break;
-    case "paused": timerFunc= setInterval(generateNumber,SPEED);
-                setText("pause");
-                state="running";
-                break;
-    case "completed": clearInterval(timerFunc);
-                location.reload();
-                break;
-    default: state = "completed";
-              clearInterval(timerFunc);
+  var timer = document.getElementById("countdown");
+  if(document.getElementById("autoGen").checked){
+    timer.style.visibility="visible";
+    switch (state) {
+      case "idle": generateNumber();
+      timerFunc= setInterval(generateNumber,SPEED);
+      setText("pause");
+      state="running";
+      break;
+      case "running":  clearInterval(timerFunc);
+      timer.style.visibility="hidden";
+      setText("resume");
+      state = "paused";
+      break;
+      case "paused": generateNumber();
+      timerFunc= setInterval(generateNumber,SPEED);
+      setText("pause");
+      state="running";
+      break;
+      case "completed": clearInterval(timerFunc);
+      location.reload();
+      break;
+      default: state = "completed";
+      clearInterval(timerFunc);
+    }
+  }
+  else {
+    clearInterval(timerFunc);
+    generateNumber();
+    setText("next");
+    timer.style.visibility="hidden";
   }
 }
 
 //For manual gameplay, call this function directly - btn onclick
 generateNumber=()=>{
+  //delay to let everything complete
   var nextNumber = returnRandomNumber();
   if(nextNumber<=0){
     //there has been a problem. or the game is over.
@@ -110,5 +127,19 @@ generateNumber=()=>{
     msg.textContent = keywords[nextNumber]!=""?keywords[nextNumber]+" : ":"";
     num.textContent = nextNumber;
     num.style.visibility="visible";
+    //startCountdown
+    startCountdown();
   }
+}
+
+var countdownTimer;
+startCountdown = () => {
+  var rootBar=document.getElementById("countdown");
+  clearInterval(countdownTimer);
+  var count = INTERVAL;
+  rootBar.value=INTERVAL;
+  countdownTimer = setInterval(()=>{
+    count--;
+    rootBar.value=count;
+  },SPEED/INTERVAL);
 }

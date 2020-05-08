@@ -14,12 +14,17 @@
     <header><h1>Tambola</h1></header>
     <main>
       <div class="clicker">
+        <div class="controls">
         <button autofocus class="btn" onclick="timedGenerator()">▶️ Start</button>
+        <input id="autoGen" type="checkbox" checked="false">Autogenerate numbers</checkbox>
+        </div>
         <div id="announce">
           <div id="msg"></div>
           <div class="num" id="num"></div>
         </div>
-        <div class="timer"></div>
+        <div class="timer">
+          <progress max="10" value="10" id="countdown"></progress>
+        </div>
       </div>
       <div class="grid-container" id="tambolaTable"></div>
       <script type="text/javascript">
