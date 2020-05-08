@@ -51,7 +51,9 @@ generateNumber=()=>{
     var rootDiv=document.getElementById("logTable");
     var newElement=document.createElement("div");
     var announce = document.getElementById("announce");
-    var currentNumber=document.createTextNode(nextNumber);//calling the random number generator here
+    var currentNumber=document.createTextNode(nextNumber);
+    // useless delay end
+    // useless delay start
     newElement.appendChild(currentNumber);
     rootDiv.appendChild(newElement);
     var updateElement = document.getElementById(nextNumber);

@@ -1,8 +1,10 @@
 :root{
   --primary-dark: #200F75;
   --primary-light: #EEEEEE;
+  --primary-light-alpha: #EEEEEE66;
   --base: #0078e7;
   --secondary: #ACACAC;
+  --secondary-alpha:#ACACAC66;
   --tertiary: #767676;
   --clicker-height:50px;
   --numbers: #389BF2;
@@ -35,23 +37,51 @@ aside{
   margin: 10px 0 10px 0;
   width:100%;
   display:inline-flex;
+
 }
 .btn{
-  padding:0.46em 1.6em;
-  border:0.1em solid #000000;
   border-radius:0.12em;
   font-weight:300;
   color:var(--primary-dark);
   background-color:var(--primary-light);
-  /* background-color:var(--primary-light); */
-  transition: all 0.15s;
+  /* background-color:var(--primary-light);
+  transition: all 0.15s;*/
   height: var(--clicker-height);
   width: 20%;
+  font-size: 22px;
+/* New */
+    border: none;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    box-shadow: 0 15px 40px var(--primary-light-alpha);
+    transform: perspective(600px) rotateX(0deg) scale(1);
+    transition: all 0.2s linear;
 }
 .btn:hover{
-  color:var(--base);
-  border-color:var(--primary-light);
+  background-color: var(--secondary);
+  box-shadow: 0 20px 40px var(--primary-light-alpha));
 }
+.btn:active{
+    transform: perspective(600px) rotateX(15deg)  scale(0.9);
+    font-size: 21px;
+    box-shadow: 0 20px 40px var(--secondary-alpha);
+}
+/* .btn.active:active{
+  transform(perspective(600px) rotateX(0deg) scale(1));
+  font-size: 22px;
+  box-shadow(0 15px 40px rgba(var(--primary-light),0.5));
+} */
 #announce{
     width: 80%;
     display: inline;
