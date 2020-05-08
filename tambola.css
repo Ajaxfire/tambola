@@ -13,11 +13,14 @@
 }
 body{
   margin: 0 auto;
-  width: 960px;
-  background-color: var(--primary-light-alpha);
+  width: 1000px;
   color: var(--primary-dark);
   font-family: Helvetica Arial sans-serif;
+  background-image: url('bkg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 main{
   align-items: center;
   width:85%;
@@ -34,9 +37,12 @@ aside{
 }
 
 .bodyFlex{
+  width:100%;
+  padding: 0px 20px 40px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: var(--primary-light-alpha);
 }
 
 .clicker{
