@@ -11,12 +11,11 @@
 </head>
 <body>
   <div class="bodyFlex">
-    <header><h1>Tambola</h1></header>
-    <main>
+      <div class="header"><h1>Tambola</h1></div>
       <div class="clicker">
         <div class="controls">
         <button autofocus class="btn" onclick="timedGenerator()">▶️ Start</button>
-        <input id="autoGen" type="checkbox" checked="false">Autogenerate numbers</checkbox>
+        <input id="autoGen" type="checkbox">Autogenerate numbers</checkbox>
         </div>
         <div id="announce">
           <div id="msg"></div>
@@ -26,6 +25,7 @@
           <progress max="10" value="10" id="countdown"></progress>
         </div>
       </div>
+      <main>
       <div class="grid-container" id="tambolaTable"></div>
       <script type="text/javascript">
       generateBlankTemplate();
