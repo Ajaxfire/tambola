@@ -37,60 +37,55 @@ aside{
   margin: 10px 0 10px 0;
   width:100%;
   display:inline-flex;
-
+}
+.controls{
+  width:20%;
 }
 .btn{
   border-radius:0.12em;
   font-weight:300;
   color:var(--primary-dark);
   background-color:var(--primary-light);
-  /* background-color:var(--primary-light);
-  transition: all 0.15s;*/
-  height: var(--clicker-height);
-  width: 20%;
+  height: 30px;
+  width: 100%;
   font-size: 22px;
-/* New */
-    border: none;
-    outline: none;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    -moz-user-select: -moz-none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    -webkit-appearance: none;
-    box-shadow: 0 15px 40px var(--primary-light-alpha);
-    transform: perspective(600px) rotateX(0deg) scale(1);
-    transition: all 0.2s linear;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  box-shadow: 0 15px 40px var(--primary-light-alpha);
+  transform: perspective(600px) rotateX(0deg) scale(1);
+  transition: all 0.2s linear;
 }
 .btn:hover{
   background-color: var(--secondary);
   box-shadow: 0 20px 40px var(--primary-light-alpha));
 }
 .btn:active{
-    transform: perspective(600px) rotateX(15deg)  scale(0.9);
-    font-size: 21px;
-    box-shadow: 0 20px 40px var(--secondary-alpha);
+  transform: perspective(600px) rotateX(15deg)  scale(0.9);
+  font-size: 21px;
+  box-shadow: 0 20px 40px var(--secondary-alpha);
 }
-/* .btn.active:active{
-  transform(perspective(600px) rotateX(0deg) scale(1));
-  font-size: 22px;
-  box-shadow(0 15px 40px rgba(var(--primary-light),0.5));
-} */
 #announce{
-    width: 80%;
-    display: inline;
-    text-align: center;
-    font-size: 30px;
-    height:var(--clicker-height);
+  width: 60%;
+  display: inline;
+  text-align: center;
+  font-size: 30px;
+  height:var(--clicker-height);
 }
 #announce > div{
   display:inline;
+}
+.timer{
+  display: inline;
+  width: 20%;
 }
 .num{
   visibility: hidden;
@@ -99,24 +94,32 @@ aside{
   background-color: var(--primary-dark);
   border: 5px solid var(--primary-light);
 }
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
+.grid-container {
+  display: grid;
+  grid-gap:5px;
+  padding:5px;
   justify-content: center;
-/*  background-color: var(--secondary); */
-}
-.flex-container > div {
   background-color: var(--numbers);
-  width: 10%;
+  grid-template-columns: repeat(10,1fr);
+}
+.grid-container > div {
+  background-color: var(--numbers);
   text-align: center;
   line-height: 50px;
   font-size: 30px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
 }
 .notUsed{
   color: var(--secondary);
+  border-radius:50%;
+  border:1px solid var(--numbers);
 }
 .used{
   color: var(--primary-dark);
+  border-radius:50%;
+  border:1px solid var(--primary-dark);
 }
 .numCalled{
   width:100%;
@@ -136,3 +139,52 @@ aside{
   font-size:15px;
   width:20%;
 }
+progress[value]{
+  width:100%;
+  height:50px;
+  -webkit-appearance: none;
+  appearance: none;
+  border:none;
+  visibility: hidden;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+progress[value]::-webkit-progress-value {
+  background-image:
+  -webkit-linear-gradient(-45deg,
+    transparent 33%, rgba(0, 0, 0, .1) 33%,
+    rgba(0,0, 0, .1) 66%, transparent 66%),
+    -webkit-linear-gradient(top,
+      rgba(255, 255, 255, .25),
+      rgba(0, 0, 0, .25)),
+      -webkit-linear-gradient(left, #09c, #f44);
+
+      border-radius: 2px;
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+    }
+    progress[value]::-moz-progress-bar {
+      background-image:
+      -moz-linear-gradient(
+        135deg,
+        transparent 33%,
+        rgba(0, 0, 0, 0.1) 33%,
+        rgba(0, 0, 0, 0.1) 66%,
+        transparent 66%
+        ),
+        -moz-linear-gradient(
+          top,
+          rgba(255, 255, 255, 0.25),
+          rgba(0, 0, 0, 0.25)
+          ),
+          -moz-linear-gradient(
+            left,
+            #09c,
+            #f44
+            );
+
+            border-radius: 2px;
+            background-size: 35px 20px, 100% 100%, 100% 100%;
+          }
