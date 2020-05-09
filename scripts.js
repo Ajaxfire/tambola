@@ -26,6 +26,7 @@ generateBlankTemplate = ()=>{
 const SPEED = 10000; //millisec
 const INTERVAL = 10;
 var state = "idle"; //can be idle, paused, running, complete
+var gameTypeIsAuto = false; //automatic number generation
 var timerFunc;
 
 returnRandomNumber=()=>{
@@ -64,9 +65,10 @@ setText=(val)=>{
 }
 //only needed for the auto-timed version of the game
 timedGenerator=()=>{
-  var timer = document.getElementById("countdown");
+  var timer = document.getElementById("timer");
   if(document.getElementById("autoGen").checked){
     timer.style.visibility="visible";
+    gameTypeIsAuto=true;
     switch (state) {
       case "idle": generateNumber();
       timerFunc= setInterval(generateNumber,SPEED);
@@ -74,6 +76,7 @@ timedGenerator=()=>{
       state="running";
       break;
       case "running":  clearInterval(timerFunc);
+      clearInterval(countdownTimer);
       timer.style.visibility="hidden";
       setText("resume");
       state = "paused";
@@ -84,14 +87,18 @@ timedGenerator=()=>{
       state="running";
       break;
       case "completed": clearInterval(timerFunc);
+      clearInterval(countdownTimer);
       location.reload();
       break;
       default: state = "completed";
       clearInterval(timerFunc);
+      clearInterval(countdownTimer);
     }
   }
   else {
+    gameTypeIsAuto=false;
     clearInterval(timerFunc);
+    clearInterval(countdownTimer);
     if(state=="completed"){
       location.reload();
     }
@@ -111,6 +118,7 @@ generateNumber=()=>{
     //there has been a problem. or the game is over.
     state="completed";
     clearInterval(timerFunc);
+    clearInterval(countdownTimer);
     setText("new");
     return;
   } else
@@ -133,18 +141,22 @@ generateNumber=()=>{
     num.textContent = nextNumber;
     num.style.visibility="visible";
     //startCountdown
-    startCountdown();
+    if(gameTypeIsAuto){
+      startCountdown();
+    }
   }
 }
 
 var countdownTimer;
 startCountdown = () => {
   var rootBar=document.getElementById("countdown");
+  var rootText = document.getElementById("timeLeft");
   clearInterval(countdownTimer);
   var count = INTERVAL;
   rootBar.value=INTERVAL;
   countdownTimer = setInterval(()=>{
     count--;
+    rootText.textContent="Only "+count+" second"+(count>1?"s":"")+" left";
     rootBar.value=count;
   },SPEED/INTERVAL);
 }
