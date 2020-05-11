@@ -26,12 +26,7 @@ main{
   width:85%;
   padding-top: 15px;
 }
-.header{
-  display: block;
-  width:100%;
-  text-align: center;
-  margin: 0 auto;
-}
+
 aside{
   width:15%;
 }
@@ -44,7 +39,12 @@ aside{
   justify-content: center;
   background-color: var(--primary-light-alpha);
 }
-
+.header{
+  display: block;
+  width:100%;
+  text-align: center;
+  margin: 0 auto;
+}
 .clicker{
   width:100%;
   display:flex;
@@ -192,12 +192,111 @@ progress[value]::-moz-progress-bar {
   border-radius: 2px;
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }
-/*progress:before {
-  content: attr(data-label);
-  font-size: 0.8em;
-  vertical-align: 0;
-}*/
 #timeLeft{
   font-size: 0.8em;
   height:20px;
+}
+
+/* Specific for the ticket generator */
+.tg-body{
+  width:100%;
+  padding: 0px 20px 20px 20px;
+  min-height: 700px;
+  background-color: var(--primary-light-alpha);
+}
+.tg-header{
+  display: block;
+  width:100%;
+  text-align: center;
+  margin: 0 auto;
+  font-size:30px;
+  padding:10px;
+}
+.tg-clicker{
+  width:100%;
+  display:inline;
+}
+.tg-table{
+  display:grid;
+  grid-template-columns: 50% 50%;
+}
+.tg-grid-container {
+  display: grid;
+  grid-gap:0px;
+  padding:5px;
+  justify-content: center;
+  background-color: var(--primary-light-alpha);
+  grid-template-columns: repeat(9,1fr);
+
+
+}
+.tg-grid-container > div {
+  background-color: var(--primary-light-alpha);
+  border:1px solid var(--base);
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+
+.tg-btn{
+  border-radius:.3em;
+  font-weight:300;
+  color:var(--primary-light-alpha);
+  background-color:var(--primary-dark);
+  height: 50px;
+  width: 250px;
+  font-size: 20px;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transform: perspective(600px) rotateX(0deg) scale(1);
+  transition: all 0.2s linear;
+  margin-bottom:20px;
+  margin-top: 20px;
+}
+.tg-btn:hover{
+  background-color: var(--primary-light-alpha);
+  color:var(--primary-dark);
+  box-shadow: 0 20px 40px var(--primary-light-alpha));
+}
+.tg-btn:active{
+  transform: perspective(600px) rotateX(15deg)  scale(0.9);
+  font-size: 21px;
+  box-shadow: 0 20px 40px var(--secondary-alpha);
+}
+.tg-msg{
+  display:inline;
+  height:50px;
+  font-size: 20px;
+}
+#inputTickets{
+  width:400px;
+  margin-left: 20px;
+  height:40px;
+  font-size: 20px;
+}
+#inputTickets:invalid+span:after {
+  content: '✖';
+  padding-left: 5px;
+}
+
+#inputTickets:valid+span:after {
+  content: '✓';
+  padding-left: 5px;
+}
+.tg-used{
+  color: var(--primary-dark);
+
 }
