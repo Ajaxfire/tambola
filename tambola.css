@@ -227,8 +227,6 @@ progress[value]::-moz-progress-bar {
   justify-content: center;
   background-color: var(--primary-light-alpha);
   grid-template-columns: repeat(9,1fr);
-
-
 }
 .tg-grid-container > div {
   background-color: var(--primary-light-alpha);
@@ -240,7 +238,6 @@ progress[value]::-moz-progress-bar {
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;
 }
-
 .tg-btn{
   border-radius:.3em;
   font-weight:300;
@@ -298,5 +295,4 @@ progress[value]::-moz-progress-bar {
 }
 .tg-used{
   color: var(--primary-dark);
-
 }
