@@ -17,8 +17,8 @@ body{
   color: var(--primary-dark);
   font-family: Helvetica Arial sans-serif;
   background-image: url('bkg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  /*background-size: cover */;
 }
 
 main{
@@ -223,7 +223,7 @@ progress[value]::-moz-progress-bar {
 .tg-grid-container {
   display: grid;
   grid-gap:0px;
-  padding:5px;
+  margin:20px;
   justify-content: center;
   background-color: var(--primary-light-alpha);
   grid-template-columns: repeat(9,1fr);
