@@ -4,8 +4,9 @@ The game is available on  [AjaxFire's Tambola Page](https://ajaxfire.github.io/t
 
 ### Features
 
-- Only the Tambola number generator is available at the moment. 
-- A ticket generator and validator are under development.
+- Tambola number generator. 
+- Ticket generator 
+- Ticket validator is under development.
 
 ### Donate
 Funding link on [RazorPay](https://rzp.io/l/ajaxfire-projects) 
