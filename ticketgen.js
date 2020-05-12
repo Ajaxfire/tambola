@@ -142,4 +142,9 @@ generateBlankTemplate = (e)=>{
   }
 }
 
+printDiv=()=> {
+  window.print();
+}
+
 document.getElementById("btnSubmit").addEventListener("click", generateBlankTemplate);
+document.getElementById("printBtn").addEventListener("click", printDiv);

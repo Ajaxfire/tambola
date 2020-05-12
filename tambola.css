@@ -300,3 +300,17 @@ progress[value]::-moz-progress-bar {
 .tg-used{
   color: var(--primary-dark);
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #tambolaTable, #tambolaTable * {
+    visibility: visible;
+  }
+  #tambolaTable {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
