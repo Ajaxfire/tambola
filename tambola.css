@@ -215,13 +215,16 @@ progress[value]::-moz-progress-bar {
 .tg-clicker{
   width:100%;
   display:inline;
+  font-size: 20px;
 }
 .tg-table{
-  display:grid;
-  grid-template-columns: 50% 50%;
+  display:flex;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 .tg-grid-container {
   display: grid;
+  flex: 0 0 400px;
   grid-gap:0px;
   margin:20px;
   justify-content: center;
@@ -276,7 +279,6 @@ progress[value]::-moz-progress-bar {
 .tg-msg{
   display:inline;
   height:50px;
-  font-size: 20px;
 }
 #inputTickets{
   width:400px;
@@ -286,12 +288,14 @@ progress[value]::-moz-progress-bar {
 }
 #inputTickets:invalid+span:after {
   content: '✖';
+  color: var(--button-bkg);
   padding-left: 5px;
 }
 
 #inputTickets:valid+span:after {
   content: '✓';
   padding-left: 5px;
+  color: var(--base);
 }
 .tg-used{
   color: var(--primary-dark);
